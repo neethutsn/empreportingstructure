@@ -1,0 +1,25 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<div class="main">
+    <h2>Reporting Employees</h2>
+    <table border="1">
+        <tr>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Reporting to</th>
+        </tr>
+        {% for emp in emp_data %}
+        <tr>
+            <td>{{emp.emp_code}}</td>
+            <td>{{emp.emp_name}}</td>
+            <td><select name="supervisor" id="">
+                <option value="emp01">EMP01</option>
+                <option value="emp06">EMP06</option>
+            </select></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

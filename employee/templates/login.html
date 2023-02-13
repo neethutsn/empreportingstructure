@@ -1,0 +1,74 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <div>
+                <h2>Login</h2>
+            </div>
+            <form class="form" id="form" method="post">
+                {% csrf_token %}
+                <div class="_formcontrol">
+                    <label for="" id="error_code"></label>
+                    <label for="">Employee code</label>
+                    <input type="text" id="code" name="emp"><br><br>
+                    <label for="" id="error_password"></label><br>
+                    <label for="">Password</label>
+                    <input type="password" id="pass_word" name="password"><br><br>
+                    <button type="submit" onclick="return _loginform()">Login</button>
+                    <p>{{msg}}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+         
+        function _loginform(){
+        
+            var empcode = document.getElementById('code').value;
+            var pwd = document.getElementById('pass_word').value;
+            var status=1;
+         if(empcode == ""){
+                error_code.innerHTML = "please enter email address";
+                error_code.style.display = "block";
+                error_code.style.color = "red";
+                code.style.borderColor = "red";
+                // return false;
+                status=0;
+         }
+         else{
+                error_code.style.display = "none";
+                code.style.borderColor = "violet";
+                status=1;
+         }
+         if(pwd == ""){
+                error_password.innerHTML = "please enter password";
+                error_password.display = "block";
+                error_password.style.color = "red";
+                pass_word.style.borderColor = "red";
+                // return false;
+                status=0;
+         }
+         else{
+            error_password.style.display = "none";
+            pass_word.style.borderColor = "violet";
+            status=1;
+         }
+        if(status == 0){
+            return false;
+        } 
+        else{
+            return true;
+        }
+        }
+    </script>
+</body>
+</html>

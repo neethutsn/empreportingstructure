@@ -1,0 +1,147 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h2>Register Employee</h2>
+        </div>
+        <form class="form" method="post" id="form" action="">
+            {% csrf_token %}
+            <div class="form_control">
+                <label for="" id="name_error"></label>
+                <label>Name</label>
+                <input type="text" id="_name" name="name"><br><br>
+                <label for="" id="mobile_error"></label>
+                <label for="">Contact</label>
+                <input type="text" id="_mobile" name="contact"><br><br>
+                <label for="cars">Choose Employeecode:</label>
+
+                <select name="empcode" id="empcode">
+                    <option value="emp01">EMP01</option>
+                    <option value="emp02">EMP02</option>
+                    <option value="emp03">EMP03</option>
+                    <option value="emp04">EMP04</option>
+                    <option value="emp05">EMP05</option>
+                    <option value="emp06">EMP06</option>
+                    <option value="emp07">EMP07</option>
+                    <option value="emp08">EMP08</option>
+                    <option value="emp09">EMP09</option>
+                    <option value="emp10">EMP10</option>
+                </select><br><br>
+
+                <legend>Category:</legend><br>
+
+                <input type="checkbox" name="category" value="employee" onclick="return Validatecat();">Employee<br>
+                <input type="checkbox" name="category" value="supervisor" onclick="return Validatecat();">Supervisor<br>
+
+                <br>
+                <label for="" id="password_error"></label>
+                <label for="">Password</label>
+                <input type="text" id="_password" name="password"><br><br>
+                <label for="" id="confirm_error"></label>
+                <label for="">Confirm Password</label>
+                <input type="text" id="_confirm"><br><br>
+                <button type="submit" onclick="return _register()">SignUp</button>
+                <p>{{msg}}</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+
+
+        function _register() {
+            var name = document.getElementById('_name').value;
+            var mobile = document.getElementById('_mobile').value;
+            var password = document.getElementById('_password').value;
+            var confirm = document.getElementById('_confirm').value;
+
+            var status = 1;
+
+            if (name == "") {
+                name_error.innerHTML = "please enter your name";
+                name_error.style.display = "block";
+                name_error.style.color = "red";
+                _name.style.borderColor = "red";
+                status = 0;
+            }
+            else {
+                name_error.style.display = "none";
+                _name.style.borderColor = "violet";
+                status = 1;
+            }
+
+            if (mobile == "") {
+                mobile_error.innerHTML = "please enter mobile number";
+                mobile_error.style.display = "block";
+                mobile_error.style.color = "red";
+                _mobile.style.borderColor = "red";
+                status = 0;
+            }
+
+            else if (document.getElementById('_mobile').value.length == 10) {
+                mobile_error.style.display = "none";
+                _mobile.style.borderColor = "violet";
+                status = 1;
+            }
+            else {
+                alert("mobile number should be 10 digits");
+                status = 0;
+            }
+
+            if (password == "") {
+                password_error.innerHTML = "please enter password";
+                password_error.style.display = "block";
+                password_error.style.color = "red";
+                _password.style.borderColor = "red";
+                status = 0;
+
+            }
+            else if ((document.getElementById('_password').value.length) < 8) {
+                alert("password must contain 8 characters");
+                status = 0;
+            }
+
+            else {
+                password_error.style.display = "none";
+                _password.style.borderColor = "violet";
+                status = 1;
+            }
+
+            if (status == 0) {
+                return false;
+            }
+            else {
+                return true;
+            }
+
+        }
+
+
+        function Validatecat() {
+            var checkboxes = document.getElementsByName("category");
+            var numberOfCheckedItems = 0;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked)
+                    numberOfCheckedItems++;
+            }
+            if (numberOfCheckedItems > 2) {
+                alert("You can't select more than two favorite pets!");
+                return false;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

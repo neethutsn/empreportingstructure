@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.sidebar{
+    position: fixed;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: violet;
+    border-radius: 1px solid rgb(82, 12, 82);
+}
+.sidebar header{
+    font-size: 25px;
+    font-family: sans-serif;
+    color: black;
+    text-align: center;
+    line-height: 70px;
+    background: rgb(206, 152, 206);
+    
+}
+.sidebar ul a{
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: black;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(95, 5, 95);
+    border-bottom: 1px solid rgb(51, 6, 51);
+    transition: .4s;
+
+}
+ul li:hover a{
+    padding-left: 50px;
+}
+.sidebar ul a i{
+    margin-right: 16px;
+}
+section{
+    height: 100vh;
+    background-color: violet;
+    margin-left: 250px;
+    padding: 10px;
+}
+section .main{
+    background-color: rgb(101, 109, 86);
+    height: 50%;
+}
+h2{
+    text-align: center;
+    padding-top: 25px;
+    font-size: 25px;
+    font-weight: 300;
+    padding-bottom: 25px;
+}
+table{
+    color: black;
+    background-color: aliceblue;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px;
+    border-color: black;
+}
+table td,th{
+    padding: 10px;
+    text-align: left;
+}

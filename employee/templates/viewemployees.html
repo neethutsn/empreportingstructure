@@ -1,0 +1,22 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<div class="main">
+    <h2>Reporting structure</h2>
+    <table border="1">
+        <tr>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Reporting to supervisor</th>
+        </tr>
+        {% for emp in emp_data %}
+        <tr>
+            <td>{{emp.emp_code}}</td>
+            <td>{{emp.emp_name}}</td>
+            <td>{{emp.emp_supervisor}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
